@@ -21,8 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --noite:#0C1A33; --noite-2:#132A4E; --azul:#16305C; --ouro:#B8912F;
-  --papel:#F4F6F9; --carta:#FFF; --linha:#DCE2EB; --linha-2:#EDF0F5;
+  --noite:#0C1A33; --azul:#16305C; --azul-2:#1C3E75;
+  --ouro:#C2982C; --ouro-cl:#E9B949; --ouro-bg:#FBF2DC; --ouro-tx:#8A6316; --ouro-ln:#EEDCA8;
+  --marca:#16305C; --marca-bg:#E4EAF5; --marca-ln:#C3D2EA;
+  --rubro:#B4342A;
+  --papel:#F1F3F7; --carta:#FFF; --linha:#DCE2EB; --linha-2:#EDF0F5;
   --tinta:#11161F; --tinta-2:#3B465A; --tinta-3:#6E7A8D;
   --acc:#16305C; --acc-soft:#E4EAF5; --on-acc:#FFF;
   --disp:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -30,12 +33,18 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-tema="claro"]){
+    --azul:#1A2E52; --azul-2:#20406F;
+    --ouro-bg:#2A2314; --ouro-tx:#E0BB63; --ouro-ln:#4A3C1C;
+    --marca:#9BB8EA; --marca-bg:#16203A; --marca-ln:#27365A;
     --papel:#0B0F16; --carta:#141A24; --linha:#242C3A; --linha-2:#1C222C;
     --tinta:#E8ECF2; --tinta-2:#AFB8C6; --tinta-3:#7C8699;
     --acc:#9BB8EA; --acc-soft:#1A2436; --on-acc:#0B0F16;
   }
 }
 :root[data-tema="escuro"]{
+  --azul:#1A2E52; --azul-2:#20406F;
+  --ouro-bg:#2A2314; --ouro-tx:#E0BB63; --ouro-ln:#4A3C1C;
+  --marca:#9BB8EA; --marca-bg:#16203A; --marca-ln:#27365A;
   --papel:#0B0F16; --carta:#141A24; --linha:#242C3A; --linha-2:#1C222C;
   --tinta:#E8ECF2; --tinta-2:#AFB8C6; --tinta-3:#7C8699;
   --acc:#9BB8EA; --acc-soft:#1A2436; --on-acc:#0B0F16;
@@ -43,12 +52,14 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--papel);color:var(--tinta);
   font:16px/1.5 var(--corpo);-webkit-text-size-adjust:100%}
+.w{max-width:760px;margin:0 auto;padding:0 16px}
 
-/* ---------- hero ---------- */
-.hero{background:var(--noite);color:#fff;position:relative;overflow:hidden}
+/* ---------- topo ---------- */
+.hero{background:var(--noite);color:#fff;position:relative;overflow:hidden;
+  border-bottom:4px solid var(--ouro)}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 82% 8%, rgba(60,110,190,.30), transparent 62%)}
-.hero-in{max-width:620px;margin:0 auto;padding:18px 18px 22px;position:relative;z-index:1}
+  background:radial-gradient(120% 90% at 84% 6%, rgba(60,110,190,.30), transparent 62%)}
+.hero-in{max-width:760px;margin:0 auto;padding:18px 16px 22px;position:relative;z-index:1}
 .marca{display:flex;align-items:center;gap:12px}
 .brasao{width:46px;flex:none}
 .marca .nm{flex:1;min-width:0}
@@ -58,54 +69,71 @@ body{margin:0;background:var(--papel);color:var(--tinta);
   border-radius:50%;cursor:pointer;flex:none;font-size:.85rem;line-height:1}
 .tema:focus-visible{outline:2px solid #E6C878;outline-offset:2px}
 
-.op{font:600 .76rem/1 var(--disp);letter-spacing:.07em;color:rgba(255,255,255,.55);
-  margin:26px 0 0}
+.op{font:600 .76rem/1 var(--disp);letter-spacing:.07em;color:rgba(255,255,255,.55);margin:26px 0 0}
 h1{font:700 2.1rem/1.04 var(--disp);margin:9px 0 0;letter-spacing:-.024em}
 h1 .d{display:block;color:#E6C878}
 .sub1{color:rgba(255,255,255,.66);margin:9px 0 0;font-size:.93rem}
 
-/* faixa de marcos */
-.faixa{display:flex;margin:26px -2px 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}
+.faixa{display:flex;margin:24px -2px 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}
 .marco{flex:1;text-align:center;position:relative;padding:0 2px}
-.marco::before{content:"";position:absolute;top:4px;left:0;right:50%;height:1px;
+.marco::before,.marco::after{content:"";position:absolute;top:4px;height:1px;
   background:rgba(255,255,255,.2)}
-.marco::after{content:"";position:absolute;top:4px;left:50%;right:0;height:1px;
-  background:rgba(255,255,255,.2)}
+.marco::before{left:0;right:50%}
+.marco::after{left:50%;right:0}
 .marco:first-child::before,.marco:last-child::after{display:none}
 .pt{display:block;width:9px;height:9px;border-radius:50%;margin:0 auto 9px;
   background:var(--noite);border:1.5px solid rgba(255,255,255,.4);position:relative;z-index:1}
 .marco.feito .pt{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.55)}
-.marco.dia .pt{background:#E6C878;border-color:#E6C878;
-  box-shadow:0 0 0 4px rgba(230,200,120,.22)}
+.marco.dia .pt{background:#E6C878;border-color:#E6C878;box-shadow:0 0 0 4px rgba(230,200,120,.22)}
 .marco b{display:block;font:700 .95rem/1 var(--disp);color:rgba(255,255,255,.88)}
 .marco i{display:block;font-style:normal;font-size:.61rem;line-height:1.25;
   color:rgba(255,255,255,.5);margin-top:4px}
 .marco.dia b{color:#E6C878}
 .marco.dia i{color:rgba(230,200,120,.85)}
 
-/* ---------- lista ---------- */
-.w{max-width:620px;margin:0 auto;padding:26px 18px 72px}
-.grupo{font:600 .78rem/1 var(--disp);letter-spacing:.075em;color:var(--tinta-3);
-  margin:0 0 12px;display:flex;align-items:center;gap:9px}
-.grupo:not(:first-of-type){margin-top:30px}
-.grupo::after{content:"";flex:1;height:1px;background:var(--linha)}
-.grupo span{order:3;font-weight:600;color:var(--tinta-3);font-size:.72rem}
+/* ---------- tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:18px 0 0}
+.tile{background:var(--carta);border:1px solid var(--linha);border-left:4px solid var(--tz);
+  border-radius:6px;padding:11px 12px}
+.tile b{display:block;font:700 1.5rem/1 var(--disp);color:var(--tinta);letter-spacing:-.02em}
+.tile span{display:block;font-size:.74rem;color:var(--tinta-3);margin-top:5px;line-height:1.25}
+.t-azul{--tz:#16305C} .t-verde{--tz:#2E9158}
+.t-ouro{--tz:var(--ouro-cl)} .t-rubro{--tz:var(--rubro)}
 
-.card{background:var(--carta);border:1px solid var(--linha);border-radius:7px;margin-bottom:9px}
-.card[open]{border-color:var(--acc);box-shadow:0 1px 3px rgba(12,26,51,.07)}
-summary{list-style:none;cursor:pointer;padding:14px 15px;display:flex;align-items:center;gap:12px}
+/* ---------- grupos ---------- */
+.bloco{margin:22px 0 0}
+.barra{background:var(--azul);border-radius:6px;padding:10px 14px;
+  display:flex;align-items:center;gap:10px}
+.barra h2{flex:1;margin:0;font:600 .82rem/1.2 var(--disp);letter-spacing:.06em;
+  text-transform:uppercase;color:#fff}
+.cr{flex:none;width:0;height:0;border-left:4.5px solid transparent;border-right:4.5px solid transparent;
+  border-top:5.5px solid rgba(255,255,255,.65)}
+.pilula{flex:none;background:var(--ouro-cl);color:#4A3A0C;border-radius:999px;
+  padding:4px 11px;font:700 .7rem/1 var(--corpo);white-space:nowrap}
+.cards{padding:9px 0 0}
+
+/* ---------- cards ---------- */
+.card{background:var(--carta);border:1px solid var(--linha);border-left:4px solid var(--bz);
+  border-radius:7px;margin-bottom:8px}
+.card.ok{--bz:#16305C}
+.card.aguarda{--bz:var(--ouro-cl)}
+.card[open]{box-shadow:0 1px 4px rgba(12,26,51,.09)}
+summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
 summary::-webkit-details-marker{display:none}
-summary:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-radius:7px}
-.mn{font:700 .82rem/1 var(--disp);color:var(--acc);flex:none;min-width:17px}
-.tt{flex:1;font-size:.97rem;font-weight:600;line-height:1.3;min-width:0}
-.tt .s{display:block;font-weight:400;font-size:.78rem;color:var(--tinta-3);margin-top:3px}
-.selo{display:inline-block;vertical-align:1px;margin-left:6px;background:var(--acc-soft);
-  color:var(--acc);font:600 .62rem/1 var(--corpo);letter-spacing:.03em;
-  padding:3px 6px;border-radius:3px}
-.ch{flex:none;color:var(--tinta-3);transition:transform .18s}
+summary:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-radius:6px}
+.face{flex:1;min-width:0}
+.pilula-id{display:inline-block;background:var(--marca-bg);color:var(--marca);
+  border:1px solid var(--marca-ln);border-radius:999px;padding:5px 12px;
+  font:600 .9rem/1.2 var(--corpo)}
+.card.aguarda .pilula-id{background:var(--ouro-bg);color:var(--ouro-tx);border-color:var(--ouro-ln)}
+.etiq{display:block;font:700 .64rem/1 var(--corpo);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--marca);margin:8px 0 0}
+.card.aguarda .etiq{color:var(--ouro-tx)}
+.meta{display:block;font-size:.8rem;color:var(--tinta-3);margin-top:5px}
+.ch{flex:none;color:var(--tinta-3);transition:transform .18s;margin-top:9px}
 .card[open] .ch{transform:rotate(180deg)}
 
-.corpo{padding:0 15px 16px}
+.corpo{padding:0 14px 15px}
 .etapas{border-top:1px solid var(--linha-2);padding-top:2px}
 .etapa{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid var(--linha-2)}
 .etapa:first-child{border-top:0}
@@ -125,20 +153,27 @@ audio.pl{height:40px}
 
 .onde{font-size:.82rem;color:var(--tinta-2);margin:16px 0 0;padding:9px 11px;
   background:var(--acc-soft);border-radius:5px}
-h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margin:19px 0 8px}
+h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
+  color:var(--tinta-3);margin:19px 0 8px}
 .dl{display:flex;gap:11px;padding:5px 0;font-size:.84rem;border-top:1px solid var(--linha-2)}
 .dl:first-child{border-top:0}
 .dq{flex:0 0 104px;color:var(--acc);font-weight:600;font-size:.79rem;line-height:1.45}
 .pontos{margin:0;padding-left:17px;font-size:.85rem;color:var(--tinta-2)}
 .pontos li{margin:4px 0}
 
-.pe{margin-top:30px;font-size:.81rem;color:var(--tinta-3);line-height:1.55}
+/* ---------- pé ---------- */
+.pe{margin-top:28px;font-size:.81rem;color:var(--tinta-3);line-height:1.55}
 .pe b{color:var(--tinta-2)}
-.assina{margin:18px 0 0;padding-top:14px;border-top:1px solid var(--linha);
+.assina{margin:18px 0 0;padding:14px 0 70px;border-top:1px solid var(--linha);
   font:600 .83rem/1 var(--disp);letter-spacing:.045em;color:var(--tinta-2)}
 .assina span{display:block;font:400 .78rem/1.4 var(--corpo);letter-spacing:0;
   color:var(--tinta-3);margin-top:5px}
 @media (prefers-reduced-motion:reduce){.ch{transition:none}}
+@media (max-width:520px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .pilula{font-size:.64rem;padding:4px 9px}
+  .barra h2{font-size:.74rem}
+}
 @media (max-width:360px){
   h1{font-size:1.78rem}
   .marco i{display:none}
@@ -167,12 +202,25 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
 </header>
 
 <div class="w">
-<h2 class="grupo">Em campo<span>4</span></h2>
-<details class="card">
+  <div class="tiles">
+    <div class="tile t-rubro"><b id="kd">—</b><span>dias para a votação</span></div>
+    <div class="tile t-azul"><b>10</b><span>módulos</span></div>
+    <div class="tile t-verde"><b>8</b><span>com vídeo</span></div>
+    <div class="tile t-ouro"><b>2</b><span>em produção</span></div>
+  </div>
+
+<section class="bloco">
+  <div class="barra"><span class="cr"></span><h2>Em campo</h2>
+    <span class="pilula">4 módulos · 4 com vídeo</span></div>
+  <div class="cards">
+<details class="card ok">
   <summary>
-    <span class="mn">01</span>
-    <span class="tt">Militar escalado <span class="selo">vídeo</span><span class="s">soldado, cabo e sargento</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">01 · Militar escalado</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">soldado, cabo e sargento</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -187,11 +235,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Primeiro acesso e PIN de 4 dígitos</li><li>Ciência da escala e onde você vota</li><li>Cheguei, votar e alimentação</li><li>Alteração e Pedir apoio</li><li>Fim de serviço e pagamento do TRE</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">02</span>
-    <span class="tt">Motorista de VTR <span class="selo">vídeo</span><span class="s">quem dirige a viatura da guarnição</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">02 · Motorista de VTR</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">quem dirige a viatura da guarnição</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -206,11 +257,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Onde fica o chip, no vidro da viatura</li><li>Assumir pelo chip ou pelo QR</li><li>Sem NFC, iPhone ou chip danificado</li><li>Quando a viatura não é a da sua escala</li><li>Devolver no fim do serviço</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">03</span>
-    <span class="tt">Comandante de posto <span class="selo">vídeo</span><span class="s">posto de votação ou guarnição</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">03 · Comandante de posto</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">posto de votação ou guarnição</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -225,11 +279,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Reconhecimento do local, na véspera</li><li>Marcar presença e falta da equipe</li><li>Informar a situação do local</li><li>Alteração e Pedir apoio</li><li>Urna entregue encerra a atividade</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">04</span>
-    <span class="tt">Comandante de setor, área ou companhia <span class="selo">vídeo</span><span class="s">quem vê a aba Gestão</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">04 · Comandante de setor, área ou companhia</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">quem vê a aba Gestão</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -244,12 +301,20 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>A aba Gestão e o semáforo do dia</li><li>Pedidos, impedimentos e substituições</li><li>Mover, permutar e dispensar</li><li>Autorizar com a digital</li><li>Saídas para votar e alimentação</li><li>Os relatórios e a regra de espera</li></ul>
   </div>
 </details>
-<h2 class="grupo">Na gestão e no sistema<span>6</span></h2>
-<details class="card">
+  </div>
+</section>
+<section class="bloco">
+  <div class="barra"><span class="cr"></span><h2>Na gestão e no sistema</h2>
+    <span class="pilula">6 módulos · 4 com vídeo</span></div>
+  <div class="cards">
+<details class="card ok">
   <summary>
-    <span class="mn">05</span>
-    <span class="tt">Gestor do CPC e do CPI <span class="selo">vídeo</span><span class="s">escalas no Sistema</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">05 · Gestor do CPC e do CPI</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">escalas no Sistema</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -264,11 +329,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Lançar o efetivo nas escalas</li><li>Puxar do banco do QCG</li><li>Conferir conflitos e a aba Voto</li><li>Registrar as viaturas</li><li>Fechar a escala e gerar os documentos para o SEI</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">06</span>
-    <span class="tt">Chefe de seção e diretor do QCG <span class="selo">vídeo</span><span class="s">disponibilidade do efetivo</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">06 · Chefe de seção e diretor do QCG</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">disponibilidade do efetivo</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -283,11 +351,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Receber o convite e o primeiro acesso</li><li>Marcar quem NÃO está disponível</li><li>Concluir a seção dentro do prazo</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">07</span>
-    <span class="tt">GAPE e DPO <span class="selo">vídeo</span><span class="s">coordenação da operação</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">07 · GAPE e DPO</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">coordenação da operação</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -302,11 +373,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Painel e Dia D</li><li>Liberar o 2º turno no app</li><li>Caixa geral de documentos e o ver-como</li><li>Pagamento do TRE</li><li>Autorizar e atender</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card ok">
   <summary>
-    <span class="mn">08</span>
-    <span class="tt">Entrar no computador <span class="selo">vídeo</span><span class="s">QR, número e digital</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">08 · Entrar no computador</span>
+      <span class="etiq">cartilha e vídeo</span>
+      <span class="meta">QR, número e digital</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -321,11 +395,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Entrar com o celular, pelo QR</li><li>Tocar o número e confirmar com a digital</li><li>A aba Meu app</li><li>O que só funciona no celular</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card aguarda">
   <summary>
-    <span class="mn">09</span>
-    <span class="tt">DPL — frota e chip<span class="s">cadastro e etiqueta das viaturas</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">09 · DPL — frota e chip</span>
+      <span class="etiq">vídeo em produção</span>
+      <span class="meta">cadastro e etiqueta das viaturas</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -340,11 +417,14 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>Cadastro da frota</li><li>Etiqueta: QR, código e adesivo de 5 x 5 cm</li><li>Divergência fora da escala</li><li>Trocar a viatura de um posto fechado</li></ul>
   </div>
 </details>
-<details class="card">
+<details class="card aguarda">
   <summary>
-    <span class="mn">10</span>
-    <span class="tt">Módulo de Gestão<span class="s">mapas, painéis e relatórios</span></span>
-    <svg class="ch" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="face">
+      <span class="pilula-id">10 · Módulo de Gestão</span>
+      <span class="etiq">vídeo em produção</span>
+      <span class="meta">mapas, painéis e relatórios</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="corpo">
     <div class="etapas">
@@ -359,6 +439,8 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     <ul class="pontos"><li>O que é o módulo, em 1 minuto</li><li>Roteiro de apresentação de 10 a 15 minutos</li><li>Painel, Escala e Voto</li><li>Mapa e Organograma</li><li>Dia D e o modo Apresentação</li></ul>
   </div>
 </details>
+  </div>
+</section>
 
   <p class="pe">
     <b>Suporte.</b> Dúvida sobre o app ou a escala: GAPE, na sala “GAPE · Gabinete”, aba Conversa.
@@ -381,7 +463,6 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     if (g) { try { g.setItem("tema", n); } catch(e) {} }
   };
 
-  // marcos: passados, hoje e futuros
   var hoje = new Date(), h0 = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
   Array.prototype.forEach.call(document.querySelectorAll(".marco"), function(m){
     var p = m.getAttribute("data-d").split("-");
@@ -390,14 +471,13 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;color:var(--tinta-3);margi
     else if (d.getTime() === h0.getTime()) m.classList.add("dia");
   });
 
-  // dias para o dia D
   var dD = new Date(2026,9,25), dias = Math.round((dD - h0) / 86400000);
+  document.getElementById("kd").textContent = dias > 0 ? dias : 0;
   var s = document.getElementById("sub1");
   if (dias > 1) s.textContent = "Faltam " + dias + " dias. Dez cartilhas, uma para cada função.";
   else if (dias === 1) s.textContent = "É amanhã. Dez cartilhas, uma para cada função.";
   else if (dias === 0) s.textContent = "É hoje. Dez cartilhas, uma para cada função.";
 
-  // um card aberto por vez
   var cs = document.querySelectorAll("details.card");
   Array.prototype.forEach.call(cs, function(c){
     c.addEventListener("toggle", function(){
