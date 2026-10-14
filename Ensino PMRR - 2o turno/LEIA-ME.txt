@@ -1,0 +1,64 @@
+PLATAFORMA DE ENSINO — ELEICOES 2026, 2o TURNO
+Policia Militar do Estado de Roraima · GAPE
+Votacao em 25/10/2026 · vespera em 24/10
+
+
+O QUE TEM AQUI
+--------------
+index.html        A plataforma. Dez modulos, um por funcao, cada um com a
+                  cartilha em PDF, o video e o podcast. Contagem regressiva
+                  para o dia D e o calendario da operacao.
+
+cartilhas/        As dez cartilhas em PDF, ja com os nomes que a pagina procura.
+
+midia/            Pasta vazia, esperando os videos e os podcasts.
+
+
+COMO PUBLICAR
+-------------
+Repositorio: github.com/adverbio169-cmyk/ensino-policial-pmrr
+
+1. Suba o index.html na RAIZ do repositorio (substitui o que estiver la).
+2. Suba a pasta cartilhas inteira.
+3. Depois, suba os videos e os podcasts na pasta midia.
+
+Em Settings > Pages, o Source deve estar em "Deploy from a branch",
+com main e a pasta / (root).
+
+Endereco publicado:
+https://adverbio169-cmyk.github.io/ensino-policial-pmrr/
+
+
+OS NOMES QUE A PAGINA PROCURA
+-----------------------------
+Enquanto o arquivo nao existir, o modulo mostra "ainda nao publicado"
+no lugar do player. Nada quebra.
+
+  midia/01-video.mp4      midia/01-podcast.m4a    Militar escalado
+  midia/02-video.mp4      midia/02-podcast.m4a    Motorista de VTR
+  midia/03-video.mp4      midia/03-podcast.m4a    Comandante de posto
+  midia/04-video.mp4      midia/04-podcast.m4a    Comandante de setor
+  midia/05-video.mp4      midia/05-podcast.m4a    Gestor do CPC e do CPI
+  midia/06-video.mp4      midia/06-podcast.m4a    Chefe de secao do QCG
+  midia/07-video.mp4      midia/07-podcast.m4a    GAPE e DPO
+  midia/08-video.mp4      midia/08-podcast.m4a    Entrar no computador
+  midia/09-video.mp4      midia/09-podcast.m4a    DPL, frota e chip
+  midia/10-video.mp4      midia/10-podcast.m4a    Modulo de Gestao
+
+O audio tambem aceita .mp3: nesse caso me avise que eu troco a extensao
+na pagina.
+
+
+LIMITES DO GITHUB
+-----------------
+25 MB por arquivo quando se arrasta pelo navegador.
+100 MB por arquivo pelos outros caminhos.
+O repositorio inteiro deve ficar abaixo de 1 GB.
+
+Um video de aula de 10 minutos em 720p cabe em 25 MB. Se algum passar
+disso, me mande que eu comprimo.
+
+
+SE PRECISAR TROCAR UMA CARTILHA
+-------------------------------
+Suba o PDF novo com o mesmo nome, por cima. A pagina nao precisa mudar.
