@@ -732,6 +732,8 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     rotulo();
   }
   function abre(imgs, i){
+    // guarda um passo no histórico: o Voltar do celular fecha o leitor
+    try { history.pushState({lupa: 1}, ""); } catch (e) {}
     lPil.innerHTML = "";
     imgs.forEach(function(im){
       var c = document.createElement("img");
@@ -746,12 +748,22 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     document.documentElement.style.overflow = "hidden";
     vai(i);
   }
-  function fecha(){
+  function esconde(){
     lupa.hidden = true;
     document.documentElement.style.overflow = "";
     lPil.innerHTML = "";
     folhas = [];
   }
+  function fecha(){
+    // devolve o passo guardado; o popstate é quem esconde
+    if (history.state && history.state.lupa) {
+      try { history.back(); return; } catch (e) {}
+    }
+    esconde();
+  }
+  window.addEventListener("popstate", function(){
+    if (!lupa.hidden) esconde();
+  });
 
   Array.prototype.forEach.call(document.querySelectorAll(".folhas"), function(f){
     var imgs = Array.prototype.slice.call(f.querySelectorAll("img"));
