@@ -101,6 +101,31 @@ h1 .d{display:block;color:#E6C878}
 .t-azul{--tz:#16305C} .t-verde{--tz:#2E9158}
 .t-ouro{--tz:var(--ouro-cl)} .t-rubro{--tz:var(--rubro)}
 
+/* ---------- palavra da comandante ---------- */
+.palavra{margin:18px 0 0;background:var(--carta);border:1px solid var(--linha);
+  border-left:4px solid var(--ouro-cl);border-radius:7px}
+.palavra[open]{box-shadow:0 1px 4px rgba(12,26,51,.09)}
+.palavra>summary{list-style:none;cursor:pointer;padding:14px;display:flex;
+  align-items:center;gap:13px}
+.palavra>summary::-webkit-details-marker{display:none}
+.palavra>summary:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-radius:6px}
+.retrato{width:62px;height:auto;flex:none;align-self:flex-start;
+  background:var(--acc-soft);border-radius:5px}
+.pv{flex:1;min-width:0}
+.pv-k{display:block;font:600 .68rem/1 var(--disp);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ouro-tx)}
+.pv-d{display:block;font:600 .92rem/1.4 var(--corpo);color:var(--tinta);margin:7px 0 0}
+.pv-a{display:block;font-size:.74rem;color:var(--tinta-3);margin-top:6px}
+.pv-corpo{padding:0 14px 16px}
+.pv-corpo p{margin:0 0 11px;font-size:.9rem;line-height:1.62;color:var(--tinta-2);
+  border-top:1px solid var(--linha-2);padding-top:12px}
+.pv-corpo p+p{border-top:0;padding-top:0}
+.pv-ass{margin:18px 0 0 !important;padding-top:13px !important;
+  border-top:1px solid var(--linha) !important;text-align:center;
+  font:600 .82rem/1.35 var(--disp) !important;letter-spacing:.03em;color:var(--tinta) !important}
+.pv-ass span{display:block;font:400 .78rem/1.4 var(--corpo);letter-spacing:0;
+  color:var(--tinta-3);margin-top:4px}
+
 /* ---------- grupos ---------- */
 .bloco{margin:22px 0 0}
 .barra{background:var(--azul);border-radius:6px;padding:10px 14px;
@@ -119,7 +144,10 @@ h1 .d{display:block;color:#E6C878}
 .card.ok{--bz:#16305C}
 .card.aguarda{--bz:var(--ouro-cl)}
 .card[open]{box-shadow:0 1px 4px rgba(12,26,51,.09)}
-summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;
+  position:sticky;top:0;z-index:3;background:var(--carta);border-radius:6px 6px 0 0}
+.card[open] summary{border-bottom:1px solid var(--linha-2);
+  box-shadow:0 2px 8px -4px rgba(12,26,51,.35)}
 summary::-webkit-details-marker{display:none}
 summary:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-radius:6px}
 .face{flex:1;min-width:0}
@@ -149,7 +177,22 @@ summary:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;border-ra
 .painel{padding-top:12px}
 .painel[hidden]{display:none}
 .folhas img{width:100%;height:auto;display:block;border:1px solid var(--linha);
-  border-radius:4px;margin-bottom:8px;background:#fff}
+  border-radius:4px;margin-bottom:8px;background:#fff;cursor:zoom-in}
+.dica{margin:0 0 9px;font-size:.78rem;color:var(--tinta-3);text-align:center}
+
+/* lupa: leitura em tela cheia */
+.lupa{position:fixed;inset:0;z-index:50;background:#05080F;display:flex;flex-direction:column}
+.lupa[hidden]{display:none}
+.lupa-bar{display:flex;align-items:center;gap:6px;padding:9px 10px;background:#0C1A33;
+  flex:none;border-bottom:1px solid rgba(255,255,255,.14)}
+.lupa-bar button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.24);
+  color:#fff;border-radius:5px;width:40px;height:40px;cursor:pointer;flex:none;
+  font:600 1.05rem/1 var(--corpo)}
+.lupa-bar button:disabled{opacity:.3;cursor:default}
+.lupa-bar .n{flex:1;text-align:center;font-size:.78rem;color:rgba(255,255,255,.72)}
+.lupa-ct{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pinch-zoom;
+  background:#05080F}
+.lupa-ct img{display:block;max-width:none;height:auto;background:#fff}
 .baixa{margin:4px 0 0;font-size:.79rem;color:var(--tinta-3)}
 .baixa a{color:var(--acc);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
 .pl{width:100%;display:block;border-radius:5px}
@@ -165,6 +208,10 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
 .dq{flex:0 0 104px;color:var(--acc);font-weight:600;font-size:.79rem;line-height:1.45}
 .pontos{margin:0;padding-left:17px;font-size:.85rem;color:var(--tinta-2)}
 .pontos li{margin:4px 0}
+.fechar{display:block;width:100%;margin:18px 0 0;padding:11px;cursor:pointer;
+  background:transparent;border:1px solid var(--linha);border-radius:5px;
+  color:var(--tinta-2);font:600 .83rem/1 var(--corpo)}
+.fechar:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 
 /* ---------- pé ---------- */
 .pe{margin-top:28px;font-size:.81rem;color:var(--tinta-3);line-height:1.55}
@@ -214,6 +261,23 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="tile t-ouro"><b>2</b><span>em produção</span></div>
   </div>
 
+<details class="palavra">
+  <summary>
+    <img class="retrato" src="comandante.png" width="360" height="480"
+         alt="Comandante-Geral da Polícia Militar do Estado de Roraima">
+    <span class="pv">
+      <span class="pv-k">Palavra da Comandante-Geral</span>
+      <span class="pv-d">“Conto com o profissionalismo de cada um de vocês e tenho plena confiança na nossa tropa.”</span>
+      <span class="pv-a">VALDEANE ALVES DE OLIVEIRA – CEL QOC PM</span>
+    </span>
+    <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="pv-corpo">
+    <p>Aos policiais militares de Roraima,</p><p>A Polícia Militar entra no 2º turno das Eleições 2026 com a mesma disciplina e o mesmo compromisso com que cumpriu o 1º turno: garantir ao eleitor roraimense o livre exercício do voto, com segurança, neutralidade e respeito à lei.</p><p>Registro o meu agradecimento à força-tarefa formada pelo GAPE, pelo DPO, pela DPL, pela DTI, pela DRH, pelo CPC e pelo CPI. Foram sete órgãos que trabalharam juntos, com método e dedicação, para que a Corporação chegasse preparada ao Dia D.</p><p>Este manual apresenta o Sistema Operações · PMRR e o aplicativo de campo, que modernizam a gestão operacional da Corporação: a escala, a chamada, a frota, os relatórios e a comunicação passam a ser conduzidos num único ambiente, com mais transparência, rastreabilidade e rapidez na decisão.</p><p>O 1º turno foi um grande aprendizado. No Dia D, 1.036 policiais foram empregados e o Sistema acompanhou, em tempo real, a presença, as viaturas e os relatórios de cada posto. O que funcionou será mantido, e o que pode melhorar está sendo aperfeiçoado para o 2º turno.</p><p>Quero ver o policial valorizado: menos papel e mais informação na palma da mão, com a chamada, as cartilhas e a transparência nas escalas e mais transparência ao TRE. Essa mesma plataforma continuará a serviço de outras operações da PMRR, como eventos, festas e o carnaval, dentro do aplicativo oficial Sou PM.</p><p>A tecnologia, porém, só cumpre o seu papel nas mãos de quem a usa. Por isso peço que cada policial leia, com atenção, a cartilha da sua função, e guarde a sua senha e o seu PIN como informações pessoais.</p><p>Conto com o profissionalismo de cada um de vocês e tenho plena confiança na nossa tropa. Que o 2º turno transcorra em paz, e que a PMRR continue sendo motivo de confiança para a sociedade de Roraima.</p>
+    <p class="pv-ass">VALDEANE ALVES DE OLIVEIRA – CEL QOC PM<span>Comandante-Geral da PMRR</span></p>
+  </div>
+</details>
+
 <section class="bloco">
   <div class="barra"><span class="cr"></span><h2>Em campo</h2>
     <span class="pilula">4 módulos · 4 com vídeo</span></div>
@@ -234,6 +298,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/01-p-1.jpg" alt="Militar escalado, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/01-p-2.jpg" alt="Militar escalado, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/01-p-3.jpg" alt="Militar escalado, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/01-p-4.jpg" alt="Militar escalado, página 4"></div>
       <p class="baixa"><a href="cartilhas/01-militar-escalado.pdf" download>Baixar o PDF</a> · 4 páginas</p>
     </div>
@@ -244,6 +309,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">18/10, 08h</span><span>O 2º turno é liberado no app</span></div><div class="dl"><span class="dq">Até 19/10</span><span>Primeiro acesso e PIN</span></div><div class="dl"><span class="dq">Até 24/10</span><span>Ciência da escala e onde você vota</span></div><div class="dl"><span class="dq">25/10, 06h30</span><span>Cheguei, no posto</span></div><div class="dl"><span class="dq">25/10, das 08h</span><span>Votar, com autorização (limite 16h)</span></div><div class="dl"><span class="dq">25/10, das 11h</span><span>Alimentação, em revezamento</span></div><div class="dl"><span class="dq">25/10, das 16h</span><span>Fim de serviço</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Primeiro acesso e PIN de 4 dígitos</li><li>Ciência da escala e onde você vota</li><li>Cheguei, votar e alimentação</li><li>Alteração e Pedir apoio</li><li>Fim de serviço e pagamento do TRE</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 01</button>
   </div>
 </details>
 <details class="card ok">
@@ -262,6 +328,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/02-p-1.jpg" alt="Motorista de VTR, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/02-p-2.jpg" alt="Motorista de VTR, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/02-p-3.jpg" alt="Motorista de VTR, página 3"></div>
       <p class="baixa"><a href="cartilhas/02-motorista-vtr.pdf" download>Baixar o PDF</a> · 3 páginas</p>
     </div>
@@ -272,6 +339,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">Até 22/10</span><span>A DPL cola o chip e o QR nas viaturas</span></div><div class="dl"><span class="dq">25/10, ao receber</span><span>Assumir a VTR</span></div><div class="dl"><span class="dq">25/10, ao fim</span><span>Devolver a viatura</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Onde fica o chip, no vidro da viatura</li><li>Assumir pelo chip ou pelo QR</li><li>Sem NFC, iPhone ou chip danificado</li><li>Quando a viatura não é a da sua escala</li><li>Devolver no fim do serviço</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 02</button>
   </div>
 </details>
 <details class="card ok">
@@ -290,6 +358,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/03-p-1.jpg" alt="Comandante de posto, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/03-p-2.jpg" alt="Comandante de posto, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/03-p-3.jpg" alt="Comandante de posto, página 3"></div>
       <p class="baixa"><a href="cartilhas/03-comandante-posto.pdf" download>Baixar o PDF</a> · 3 páginas</p>
     </div>
@@ -300,6 +369,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">24/10</span><span>Reconhecimento do local e foto</span></div><div class="dl"><span class="dq">25/10, 06h30</span><span>Cheguei e presença da equipe</span></div><div class="dl"><span class="dq">25/10, até 07h</span><span>Fechar a presença para o relatório</span></div><div class="dl"><span class="dq">25/10, das 16h</span><span>Urna entregue, nas escolas</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Reconhecimento do local, na véspera</li><li>Marcar presença e falta da equipe</li><li>Informar a situação do local</li><li>Alteração e Pedir apoio</li><li>Urna entregue encerra a atividade</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 03</button>
   </div>
 </details>
 <details class="card ok">
@@ -318,6 +388,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/04-p-1.jpg" alt="Comandante de setor, área ou companhia, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/04-p-2.jpg" alt="Comandante de setor, área ou companhia, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/04-p-3.jpg" alt="Comandante de setor, área ou companhia, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/04-p-4.jpg" alt="Comandante de setor, área ou companhia, página 4"></div>
       <p class="baixa"><a href="cartilhas/04-comandante-setor.pdf" download>Baixar o PDF</a> · 4 páginas</p>
     </div>
@@ -328,6 +399,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">24/10</span><span>Conferir a escala e as ciências</span></div><div class="dl"><span class="dq">25/10, 06h30</span><span>Relatório da assunção</span></div><div class="dl"><span class="dq">25/10, 07h</span><span>Relatório da abertura das seções</span></div><div class="dl"><span class="dq">25/10, 12h</span><span>Relatório do meio do dia</span></div><div class="dl"><span class="dq">25/10, 16h</span><span>Relatório do encerramento</span></div><div class="dl"><span class="dq">25/10, 19h</span><span>O relatório final libera</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>A aba Gestão e o semáforo do dia</li><li>Pedidos, impedimentos e substituições</li><li>Mover, permutar e dispensar</li><li>Autorizar com a digital</li><li>Saídas para votar e alimentação</li><li>Os relatórios e a regra de espera</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 04</button>
   </div>
 </details>
   </div>
@@ -352,6 +424,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/05-p-1.jpg" alt="Gestor do CPC e do CPI, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/05-p-2.jpg" alt="Gestor do CPC e do CPI, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/05-p-3.jpg" alt="Gestor do CPC e do CPI, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/05-p-4.jpg" alt="Gestor do CPC e do CPI, página 4"></div>
       <p class="baixa"><a href="cartilhas/05-gestor-cpc-cpi.pdf" download>Baixar o PDF</a> · 4 páginas</p>
     </div>
@@ -362,6 +435,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">15/10</span><span>Fecha o banco do QCG</span></div><div class="dl"><span class="dq">16/10</span><span>Fechamento das escalas</span></div><div class="dl"><span class="dq">24/10</span><span>Véspera: conferência final</span></div><div class="dl"><span class="dq">25/10</span><span>Dia D: Painel, Dia D e Mapa</span></div><div class="dl"><span class="dq">26/10</span><span>Relatórios dos comandantes</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Lançar o efetivo nas escalas</li><li>Puxar do banco do QCG</li><li>Conferir conflitos e a aba Voto</li><li>Registrar as viaturas</li><li>Fechar a escala e gerar os documentos para o SEI</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 05</button>
   </div>
 </details>
 <details class="card ok">
@@ -380,6 +454,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/06-p-1.jpg" alt="Chefe de seção e diretor do QCG, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/06-p-2.jpg" alt="Chefe de seção e diretor do QCG, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/06-p-3.jpg" alt="Chefe de seção e diretor do QCG, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/06-p-4.jpg" alt="Chefe de seção e diretor do QCG, página 4"></div>
       <p class="baixa"><a href="cartilhas/06-chefe-secao-qcg.pdf" download>Baixar o PDF</a> · 4 páginas</p>
     </div>
@@ -390,6 +465,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">A partir de 06/10</span><span>O DRH envia o ofício com o convite</span></div><div class="dl"><span class="dq">Até 15/10</span><span>Marcar os indisponíveis e concluir</span></div><div class="dl"><span class="dq">15/10</span><span>O Sistema lança no banco quem não foi marcado</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Receber o convite e o primeiro acesso</li><li>Marcar quem NÃO está disponível</li><li>Concluir a seção dentro do prazo</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 06</button>
   </div>
 </details>
 <details class="card ok">
@@ -408,6 +484,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/07-p-1.jpg" alt="GAPE e DPO, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/07-p-2.jpg" alt="GAPE e DPO, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/07-p-3.jpg" alt="GAPE e DPO, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/07-p-4.jpg" alt="GAPE e DPO, página 4"></div>
       <p class="baixa"><a href="cartilhas/07-gape-dpo.pdf" download>Baixar o PDF</a> · 4 páginas</p>
     </div>
@@ -418,6 +495,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">15/10</span><span>Prazo da disponibilidade do QCG</span></div><div class="dl"><span class="dq">16/10</span><span>Fechamento das escalas</span></div><div class="dl"><span class="dq">18/10, 08h</span><span>Liberar o 2º turno no app</span></div><div class="dl"><span class="dq">24 e 25/10</span><span>Painel, Dia D e Mapa</span></div><div class="dl"><span class="dq">26/10</span><span>Relatórios, SEI e pagamento do TRE</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Painel e Dia D</li><li>Liberar o 2º turno no app</li><li>Caixa geral de documentos e o ver-como</li><li>Pagamento do TRE</li><li>Autorizar e atender</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 07</button>
   </div>
 </details>
 <details class="card ok">
@@ -436,6 +514,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/08-p-1.jpg" alt="Entrar no computador, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/08-p-2.jpg" alt="Entrar no computador, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/08-p-3.jpg" alt="Entrar no computador, página 3"></div>
       <p class="baixa"><a href="cartilhas/08-entrar-no-computador.pdf" download>Baixar o PDF</a> · 3 páginas</p>
     </div>
@@ -446,6 +525,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">Antes do dia D</span><span>Fazer uma vez e cadastrar a digital</span></div><div class="dl"><span class="dq">Dia D</span><span>Entrar pelo celular quando precisar</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Entrar com o celular, pelo QR</li><li>Tocar o número e confirmar com a digital</li><li>A aba Meu app</li><li>O que só funciona no celular</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 08</button>
   </div>
 </details>
 <details class="card aguarda">
@@ -464,6 +544,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/09-p-1.jpg" alt="DPL — frota e chip, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/09-p-2.jpg" alt="DPL — frota e chip, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/09-p-3.jpg" alt="DPL — frota e chip, página 3"></div>
       <p class="baixa"><a href="cartilhas/09-dpl-frota-chip.pdf" download>Baixar o PDF</a> · 3 páginas</p>
     </div>
@@ -474,6 +555,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">Até 22/10</span><span>Gravar o chip e colar o adesivo</span></div><div class="dl"><span class="dq">25/10</span><span>Acompanhar quem está com cada viatura</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>Cadastro da frota</li><li>Etiqueta: QR, código e adesivo de 5 x 5 cm</li><li>Divergência fora da escala</li><li>Trocar a viatura de um posto fechado</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 09</button>
   </div>
 </details>
 <details class="card aguarda">
@@ -492,6 +574,7 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       <button type="button" class="aba" disabled>Pódcast<small>em breve</small></button>
     </div>
     <div class="painel" data-p="c">
+      <p class="dica">Toque na página para ampliar e ler.</p>
       <div class="folhas"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-1.jpg" alt="Módulo de Gestão, página 1"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-2.jpg" alt="Módulo de Gestão, página 2"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-3.jpg" alt="Módulo de Gestão, página 3"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-4.jpg" alt="Módulo de Gestão, página 4"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-5.jpg" alt="Módulo de Gestão, página 5"><img loading="lazy" width="1240" height="1754" src="paginas/10-p-6.jpg" alt="Módulo de Gestão, página 6"></div>
       <p class="baixa"><a href="cartilhas/10-modulo-gestao.pdf" download>Baixar o PDF</a> · 6 páginas</p>
     </div>
@@ -502,8 +585,35 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     <div class="datas"><div class="dl"><span class="dq">Antes de 16/10</span><span>Apresentar o módulo à equipe</span></div><div class="dl"><span class="dq">24/10</span><span>Painel, Mapa e Dia D</span></div><div class="dl"><span class="dq">25/10</span><span>Dia D no computador e no celular</span></div><div class="dl"><span class="dq">26/10</span><span>Relatórios dos comandantes</span></div></div>
     <h4>No material</h4>
     <ul class="pontos"><li>O que é o módulo, em 1 minuto</li><li>Roteiro de apresentação de 10 a 15 minutos</li><li>Painel, Escala e Voto</li><li>Mapa e Organograma</li><li>Dia D e o modo Apresentação</li></ul>
+    <button type="button" class="fechar">Fechar o módulo 10</button>
   </div>
 </details>
+  </div>
+</section>
+
+<section class="bloco">
+  <div class="barra"><span class="cr"></span><h2>Material completo</h2>
+    <span class="pilula">56 páginas</span></div>
+  <div class="cards">
+    <details class="card ok">
+      <summary>
+        <span class="face">
+          <span class="pilula-id">Manual do Sistema Operações · PMRR</span>
+          <span class="etiq">anexo à O.Op. nº 37/2026</span>
+          <span class="meta">as dez cartilhas, a apresentação e o glossário, num documento só</span>
+        </span>
+        <svg class="ch" width="13" height="13" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="corpo">
+        <div class="painel" data-p="c">
+          <p class="dica">Toque na página para ampliar e ler.</p>
+          <div class="folhas"><img loading="lazy" width="1240" height="1754" src="manual/p-01.jpg" alt="Manual, página 1"><img loading="lazy" width="1240" height="1754" src="manual/p-02.jpg" alt="Manual, página 2"><img loading="lazy" width="1240" height="1754" src="manual/p-03.jpg" alt="Manual, página 3"><img loading="lazy" width="1240" height="1754" src="manual/p-04.jpg" alt="Manual, página 4"><img loading="lazy" width="1240" height="1754" src="manual/p-05.jpg" alt="Manual, página 5"><img loading="lazy" width="1240" height="1754" src="manual/p-06.jpg" alt="Manual, página 6"><img loading="lazy" width="1240" height="1754" src="manual/p-07.jpg" alt="Manual, página 7"><img loading="lazy" width="1240" height="1754" src="manual/p-08.jpg" alt="Manual, página 8"><img loading="lazy" width="1240" height="1754" src="manual/p-09.jpg" alt="Manual, página 9"><img loading="lazy" width="1240" height="1754" src="manual/p-10.jpg" alt="Manual, página 10"><img loading="lazy" width="1240" height="1754" src="manual/p-11.jpg" alt="Manual, página 11"><img loading="lazy" width="1240" height="1754" src="manual/p-12.jpg" alt="Manual, página 12"><img loading="lazy" width="1240" height="1754" src="manual/p-13.jpg" alt="Manual, página 13"><img loading="lazy" width="1240" height="1754" src="manual/p-14.jpg" alt="Manual, página 14"><img loading="lazy" width="1240" height="1754" src="manual/p-15.jpg" alt="Manual, página 15"><img loading="lazy" width="1240" height="1754" src="manual/p-16.jpg" alt="Manual, página 16"><img loading="lazy" width="1240" height="1754" src="manual/p-17.jpg" alt="Manual, página 17"><img loading="lazy" width="1240" height="1754" src="manual/p-18.jpg" alt="Manual, página 18"><img loading="lazy" width="1240" height="1754" src="manual/p-19.jpg" alt="Manual, página 19"><img loading="lazy" width="1240" height="1754" src="manual/p-20.jpg" alt="Manual, página 20"><img loading="lazy" width="1240" height="1754" src="manual/p-21.jpg" alt="Manual, página 21"><img loading="lazy" width="1240" height="1754" src="manual/p-22.jpg" alt="Manual, página 22"><img loading="lazy" width="1240" height="1754" src="manual/p-23.jpg" alt="Manual, página 23"><img loading="lazy" width="1240" height="1754" src="manual/p-24.jpg" alt="Manual, página 24"><img loading="lazy" width="1240" height="1754" src="manual/p-25.jpg" alt="Manual, página 25"><img loading="lazy" width="1240" height="1754" src="manual/p-26.jpg" alt="Manual, página 26"><img loading="lazy" width="1240" height="1754" src="manual/p-27.jpg" alt="Manual, página 27"><img loading="lazy" width="1240" height="1754" src="manual/p-28.jpg" alt="Manual, página 28"><img loading="lazy" width="1240" height="1754" src="manual/p-29.jpg" alt="Manual, página 29"><img loading="lazy" width="1240" height="1754" src="manual/p-30.jpg" alt="Manual, página 30"><img loading="lazy" width="1240" height="1754" src="manual/p-31.jpg" alt="Manual, página 31"><img loading="lazy" width="1240" height="1754" src="manual/p-32.jpg" alt="Manual, página 32"><img loading="lazy" width="1240" height="1754" src="manual/p-33.jpg" alt="Manual, página 33"><img loading="lazy" width="1240" height="1754" src="manual/p-34.jpg" alt="Manual, página 34"><img loading="lazy" width="1240" height="1754" src="manual/p-35.jpg" alt="Manual, página 35"><img loading="lazy" width="1240" height="1754" src="manual/p-36.jpg" alt="Manual, página 36"><img loading="lazy" width="1240" height="1754" src="manual/p-37.jpg" alt="Manual, página 37"><img loading="lazy" width="1240" height="1754" src="manual/p-38.jpg" alt="Manual, página 38"><img loading="lazy" width="1240" height="1754" src="manual/p-39.jpg" alt="Manual, página 39"><img loading="lazy" width="1240" height="1754" src="manual/p-40.jpg" alt="Manual, página 40"><img loading="lazy" width="1240" height="1754" src="manual/p-41.jpg" alt="Manual, página 41"><img loading="lazy" width="1240" height="1754" src="manual/p-42.jpg" alt="Manual, página 42"><img loading="lazy" width="1240" height="1754" src="manual/p-43.jpg" alt="Manual, página 43"><img loading="lazy" width="1240" height="1754" src="manual/p-44.jpg" alt="Manual, página 44"><img loading="lazy" width="1240" height="1754" src="manual/p-45.jpg" alt="Manual, página 45"><img loading="lazy" width="1240" height="1754" src="manual/p-46.jpg" alt="Manual, página 46"><img loading="lazy" width="1240" height="1754" src="manual/p-47.jpg" alt="Manual, página 47"><img loading="lazy" width="1240" height="1754" src="manual/p-48.jpg" alt="Manual, página 48"><img loading="lazy" width="1240" height="1754" src="manual/p-49.jpg" alt="Manual, página 49"><img loading="lazy" width="1240" height="1754" src="manual/p-50.jpg" alt="Manual, página 50"><img loading="lazy" width="1240" height="1754" src="manual/p-51.jpg" alt="Manual, página 51"><img loading="lazy" width="1240" height="1754" src="manual/p-52.jpg" alt="Manual, página 52"><img loading="lazy" width="1240" height="1754" src="manual/p-53.jpg" alt="Manual, página 53"><img loading="lazy" width="1240" height="1754" src="manual/p-54.jpg" alt="Manual, página 54"><img loading="lazy" width="1240" height="1754" src="manual/p-55.jpg" alt="Manual, página 55"><img loading="lazy" width="1240" height="1754" src="manual/p-56.jpg" alt="Manual, página 56"></div>
+          <p class="baixa"><a href="manual/manual-operacoes-pmrr.pdf" download>Baixar o PDF</a>
+             · 56 páginas</p>
+        </div>
+        <button type="button" class="fechar">Fechar o manual</button>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -512,6 +622,18 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
     Sistema ou servidor fora do ar: DTI. Ocorrência em curso: rádio primeiro.
   </p>
   <p class="assina">DEP - DTI - GAPE<span>Polícia Militar do Estado de Roraima</span></p>
+</div>
+
+<div class="lupa" id="lupa" hidden role="dialog" aria-label="Leitura da cartilha">
+  <div class="lupa-bar">
+    <button type="button" id="lpAnt" aria-label="Página anterior">&#8249;</button>
+    <button type="button" id="lpProx" aria-label="Próxima página">&#8250;</button>
+    <span class="n" id="lupaNum"></span>
+    <button type="button" id="lpMenos" aria-label="Diminuir">&#8722;</button>
+    <button type="button" id="lpMais" aria-label="Aumentar">+</button>
+    <button type="button" id="lpFechar" aria-label="Fechar a leitura">&#10005;</button>
+  </div>
+  <div class="lupa-ct" id="lupaCt"><img id="lupaImg" alt="Página da cartilha"></div>
 </div>
 
 <script>
@@ -550,6 +672,12 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       Array.prototype.forEach.call(cs, function(o){ if (o !== c) o.open = false; });
     });
 
+    var bf = c.querySelector(".fechar");
+    if (bf) bf.addEventListener("click", function(){
+      c.open = false;
+      c.scrollIntoView({block:"start"});
+    });
+
     var abas = c.querySelectorAll(".aba[data-p]");
     var pans = c.querySelectorAll(".painel");
     Array.prototype.forEach.call(abas, function(b){
@@ -570,6 +698,55 @@ h4{font:600 .7rem/1 var(--disp);letter-spacing:.085em;text-transform:uppercase;
       if (!m.paused) m.pause();
     });
   }
+
+  // ---- lupa: cartilha em tela cheia ----
+  var ZS = [1, 1.5, 2, 3, 4], zi = 2, lista = [], idx = 0;
+  var lupa = document.getElementById("lupa"),
+      lImg = document.getElementById("lupaImg"),
+      lCt  = document.getElementById("lupaCt"),
+      lNum = document.getElementById("lupaNum");
+
+  function pinta(){
+    lImg.src = lista[idx].src;
+    lImg.alt = lista[idx].alt || "Página da cartilha";
+    lImg.style.width = (ZS[zi] * 100) + "%";
+    lNum.textContent = "página " + (idx + 1) + " de " + lista.length;
+    lCt.scrollTop = 0; lCt.scrollLeft = 0;
+    document.getElementById("lpAnt").disabled = idx === 0;
+    document.getElementById("lpProx").disabled = idx === lista.length - 1;
+    document.getElementById("lpMenos").disabled = zi === 0;
+    document.getElementById("lpMais").disabled = zi === ZS.length - 1;
+  }
+  function abre(imgs, i){
+    lista = imgs; idx = i; zi = 2;
+    lupa.hidden = false;
+    document.documentElement.style.overflow = "hidden";
+    pinta();
+  }
+  function fecha(){
+    lupa.hidden = true;
+    document.documentElement.style.overflow = "";
+    lImg.removeAttribute("src");
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".folhas"), function(f){
+    var imgs = Array.prototype.slice.call(f.querySelectorAll("img"));
+    imgs.forEach(function(im, i){
+      im.addEventListener("click", function(){ abre(imgs, i); });
+    });
+  });
+
+  document.getElementById("lpFechar").onclick = fecha;
+  document.getElementById("lpAnt").onclick   = function(){ if (idx > 0) { idx--; pinta(); } };
+  document.getElementById("lpProx").onclick  = function(){ if (idx < lista.length - 1) { idx++; pinta(); } };
+  document.getElementById("lpMenos").onclick = function(){ if (zi > 0) { zi--; pinta(); } };
+  document.getElementById("lpMais").onclick  = function(){ if (zi < ZS.length - 1) { zi++; pinta(); } };
+  document.addEventListener("keydown", function(ev){
+    if (lupa.hidden) return;
+    if (ev.key === "Escape") fecha();
+    else if (ev.key === "ArrowRight" && idx < lista.length - 1) { idx++; pinta(); }
+    else if (ev.key === "ArrowLeft" && idx > 0) { idx--; pinta(); }
+  });
 })();
 </script>
 </body>
